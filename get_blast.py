@@ -1,4 +1,8 @@
-import requests, sys, os, math, time
+import requests, os, math, time
+
+# seqids = pd.read_csv("gene_ids")
+# https://plants.ensembl.org/Triticum_aestivum_robigus/Download/Tools/Blast?tl=dH2MUh3d5qVTSKJc-23302406
+# https://plants.ensembl.org/Triticum_aestivum_robigus/Download/Tools/Blast?tl=dH2MUh3d5qVTSKJc-23302378
 
 def fetch_blast(varieties, species, batch_id, first, last):
 	num_varieties = len(varieties)
@@ -38,3 +42,10 @@ def fetch_blast(varieties, species, batch_id, first, last):
 			f.writelines(r.text)
 		cnt += 1
 	return
+
+fetch_blast(
+varieties = ['claire', 'paragon', 'cadenza', 'robigus'],
+species = 'Triticum_aestivum_',
+batch_id = 'dH2MUh3d5qVTSKJc',
+first = 23302378,
+last = 23302413)
