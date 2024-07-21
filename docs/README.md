@@ -6,9 +6,10 @@ Tools for retrieving Ensembl plants BLAST results and saving them locally.
 
 ### Usage
 
-git clone https://github.com/vargasrichards/ensembl-blast-tools 
+    git clone https://github.com/vargasrichards/ensembl-blast-tools 
+    cd ensembl-blast-tools
+    python3 retrieve_blast.py
 
-python3 retrieve_blast.py
 
 ### Dependencies
 
@@ -18,7 +19,7 @@ requests, Biopython, shutil, tempfile
 
 These can be installed via PyPI:
 
-pip install requests Biopython shutil tempfile
+    pip install requests Biopython shutil tempfile
 
 ## Further Development
 
