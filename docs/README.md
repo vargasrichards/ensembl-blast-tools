@@ -1,12 +1,13 @@
 # ensembl-blast-tools
 ### Alexis Vargas Richards
-##------------------------------------------------------------------------
+## ------------------------------------------------------------------------
 
 Tools for retrieving Ensembl plants BLAST results and saving them locally.
 
 ### Usage
 
-git clone https://github.com/vargasrichards/ensembl-blast-tools
+git clone https://github.com/vargasrichards/ensembl-blast-tools 
+
 python3 retrieve_blast.py
 
 ### Dependencies
