@@ -9,7 +9,7 @@ from bs4 import BeautifulSoup # used to parse the html and select the important 
 
 def get_range(id): 
     url = 'https://plants.ensembl.org/Multi/Search/Results?species=all;idx=;q=' + str(id)
-    html_content = requests.get(url).text
+    html_content = requests.get(url).text # fetch the content
     soup = BeautifulSoup(html_content, 'html.parser') 
     twocol_div = soup.find('div', class_='twocol') # lines 14-19: some fairly messy HTML selection. Likely to be characteristic to the Ensembl plants platform.
     a_tag = twocol_div.find('a', href=lambda x: x and ':' in x) if twocol_div else None
