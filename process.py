@@ -1,3 +1,6 @@
+# Python script for processing preliminary results
+# A. Vargas Richards, 07.2024
+
 import os, re, shutil
 from tempfile import mkstemp
 
@@ -18,12 +21,13 @@ def clean_content(content):
     content = content.replace('\r', '')
     return content
 
-for root, _, files in os.walk('.'):
+for root, _, files in os.walk('.'): # inefficient strategy
     for file in files:
         file_path = os.path.join(root, file)
         temp_fd, temp_path = mkstemp()
 
         with open(file_path, 'r') as f, os.fdopen(temp_fd, 'w') as temp_file:
+            print(f'Opening file at {file_path}')
             content = f.read()
             cleaned_content = clean_content(content)
             temp_file.write(cleaned_content)

@@ -17,7 +17,7 @@ def get_range(id):
     pos_details = href_value.split('=')[1]
     id_verif, pos = (pos_details.split(';')[0]).split(':')
     start,stop = pos.split('-')
-    assert id == id_verif, "ERROR: The output sequence identifier does not match the input sequence identifier." # added safety check to nmake sure correct seq retrieved
+    assert id == id_verif, "ERROR: The output sequence identifier does not match the input sequence identifier." # added safety check to make sure correct seq retrieved
     print(f'Sequence {id_verif} starts at {start} and ends at {stop}')
     return start, stop, id_verif # return the start point, end point and id of the seq of interest. 
 

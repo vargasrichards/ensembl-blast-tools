@@ -5,6 +5,7 @@ import requests, os, math, time
 # https://plants.ensembl.org/Triticum_aestivum_robigus/Download/Tools/Blast?tl=dH2MUh3d5qVTSKJc-23302378
 
 def fetch_blast(varieties, species, batch_id, first, last):
+	print(f'Fetching BLAST for {varieties} of {species} with batch ID {batch_id} from job {first} to job {last}')
 	num_varieties = len(varieties)
 	#print(f'Number of varieties calculated as {num_varieties}')
 	pos = 0

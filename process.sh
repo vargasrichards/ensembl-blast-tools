@@ -1,14 +1,16 @@
 #!/bin/sh
-n=10 
+n=100
 for i in $(seq 1 $n); do
   unified_dir=$(dirname BLAST-results/unified_${i}.txt)
   mkdir -p "$unified_dir"
   cat BLAST*/num${i}*txt > BLAST-results/unified_${i}.txt
 done
+
 search_pattern='Query= '
 clean_content() {
-  sed 's/<[^>]*>//g' | tr -d '\r'
+  sed 's/<[^>]*>//g' | tr -d '\r' | awk '!/^>/ {print $0} /^>/ {print $0}'
 }
+
 find . -type f | while read -r file; do
   temp_file=$(mktemp)
   clean_content < "$file" > "$temp_file"
