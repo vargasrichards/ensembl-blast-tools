@@ -15,12 +15,13 @@ Tools for retrieving Ensembl plants BLAST results and saving them locally.
 
 Python 3 and the following modules are required:
 
-requests, Biopython, shutil, tempfile
+requests, Biopython, shutil, tempfile, seaborn
 
 These can be installed via PyPI:
 
-    pip install requests Biopython shutil tempfile
+    pip install requests Biopython shutil tempfile, seaborn
 
 ## Further Development
 
 ORF analysis to better detect loss-of-function changes
+Further graphics development

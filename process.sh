@@ -1,5 +1,5 @@
 #!/bin/sh
-n=100
+n=10
 for i in $(seq 1 $n); do
   unified_dir=$(dirname BLAST-results/unified_${i}.txt)
   mkdir -p "$unified_dir"
