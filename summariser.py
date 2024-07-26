@@ -1,9 +1,10 @@
 # Extracts the overview of results against a query seq
 # A. Vargas Richards, 22.07.2024
 
-import pandas as pd, subprocess
+import pandas as pd, os
 
 def overview(file):
+    print(f'File tuple is {file}')
     parent_directory, filename = file.split('/')
     summary_file = str('summary' + filename)
     # file = str(parent_directory + '/' + summary_file)
@@ -15,6 +16,14 @@ def overview(file):
                     summary.write(line)
 
     return
+
+def summarise_all(directory):
+    for (root,dirs,files) in os.walk(directory, topdown=True):
+        print (f'Root is {root}')
+        print (f'Dirs is {dirs}')
+        print (f'files is {files}')
+        print ('--------------------------------')
+    return 
 
 def parse_summary(summary_file): # reads in the summary file and converts it to a pandas dataframe which is more easily manipulated.
     summary_table = pd.DataFrame(columns=["Variety", "Identifier", "Score", "E-value"])
@@ -32,8 +41,10 @@ def parse_summary(summary_file): # reads in the summary file and converts it to 
             summary_table = pd.concat([summary_table, row])
     print(f"Summary table computed as \n{summary_table}")
     return summary_table
-test_file = 'BLAST-results/TraesCS5B02G153200'
-overview(test_file)
-parse_summary('BLAST-results/summaryTraesCS5B02G153200')
+
+#-----------------------------------------------
+#test_file = 'BLAST-results/TraesCS5B02G153200'
+#overview(test_file)
+#parse_summary('BLAST-results/summaryTraesCS5B02G153200')
 
 # def detect_differential(summary_table, filter_condition): # detects the 

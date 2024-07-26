@@ -15,7 +15,7 @@ print("DONE CLEANING FILES")
 print("----")
 print("Generating summary files")
 
-summariser.summarise("BLAST-results")
+summariser.summarise_all("BLAST-results")
 
 print("Generating FASTA files...")
 
