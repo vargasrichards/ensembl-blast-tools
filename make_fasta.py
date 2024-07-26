@@ -1,6 +1,6 @@
 # Make a fasta file from the BLAST results using simple filter rules
 # This can then be used for more specialised MSA and downstream analysis + visualisation
-# A. Vargas Richards, 22.07.2024
+# A. Vargas Richards, 07.2024
 
 import os, rest_api # rest api provides the method for fetching 
 
@@ -9,7 +9,7 @@ def to_fasta(blast_results): # create a fasta file with multiple sequences
     with open(blast_results, 'r') as results:
         with open(fasta_file, 'w') as fasta:
             # add query sequence
-            query_id = 
+            #query_id = 
 
 
             for line in results:

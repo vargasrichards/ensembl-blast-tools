@@ -1,6 +1,6 @@
 # Main script called by user.
 # 
-# A. Vargas Richards, 22.07.2024
+# A. Vargas Richards, 22.07.2024 - 
 
 import subprocess
 import requester
@@ -26,5 +26,3 @@ print("Finished making FASTA files")
 print("-----")
 
 print("Proceeding with Multiple Sequence Alignment using MUSCLE")
-
-#subprocess.call(
