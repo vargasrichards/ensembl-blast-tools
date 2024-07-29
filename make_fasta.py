@@ -4,19 +4,32 @@
 
 import textwrap, os, requests, sys
 
+import requests
+import sys
+
+def get_geneid(gene_id):
+    server = "https://rest.ensembl.org"
+    ext = f"/sequence/id/{gene_id}?"
+    r = requests.get(server + ext, headers={"Content-Type": "text/plain"})
+    if not r.ok:
+        r.raise_for_status()
+        sys.exit() 
+    return r.text
+
 def get_query(blast_results): 
-    got_query = 0
+    print(f'Getting query seq for {blast_results}')
+    query = None
+    query_id = None
     with open(blast_results, 'r') as results:
-        while got_query == 0:
-            for line in results:
-                if 'Query=' in line:
-                    query_id = line.split('=')[1].strip()
-                    got_query = 1
-                    query = get_geneid(query_id)
-                    break
-                else:
-                    print(line)
-    return query, query_id
+        for line in results:
+            if 'Query=' in line:
+                query_id = line.split('=')[1].strip()
+                query = get_geneid(query_id)
+                break
+    if query:
+        return query, query_id
+    else:
+        return None, None
 
 def get_geneid(gene_id):
     server = "https://rest.ensembl.org"
@@ -55,7 +68,7 @@ def make_all(directory):
             else:
                 #print(f"Skipped file {file}; it is already a FASTA or a summary file")
                 pass
-    print(f"Finished summarizing directory {directory}")
+    print(f"Finished summarising directory {directory}")
 
 
 

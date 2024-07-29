@@ -44,9 +44,3 @@ def fetch_blast(varieties, species, batch_id, first, last):
 		cnt += 1
 	return
 
-fetch_blast(
-varieties = ['claire', 'paragon', 'cadenza', 'robigus'],
-species = 'Triticum_aestivum_',
-batch_id = 'dH2MUh3d5qVTSKJc',
-first = 23302378,
-last = 23302413)
