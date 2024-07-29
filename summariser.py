@@ -22,9 +22,6 @@ def summarise_all(directory):
             summarise(file)
     return 
 
-
-import pandas as pd
-
 def tabulate(summary_file): # produces a sorted table of the results
     summary_table = pd.DataFrame(columns=["Variety", "Identifier", "Score", "E-value"])
     
@@ -59,6 +56,6 @@ def tabulate_all(directory):
 #-----------------------------------------------
 #test_file = 'BLAST-results/TraesCS5B02G153200'
 #overview(test_file)
-tabulate('BLAST-results/summaryTraesCS5B02G153200')
+#tabulate('BLAST-results/summaryTraesCS5B02G153200')
 
 # def detect_differential(summary_table, filter_condition): # detects the 

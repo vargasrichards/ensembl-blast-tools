@@ -19,7 +19,7 @@ requests, Biopython, shutil, tempfile, seaborn
 
 These can be installed via PyPI:
 
-    pip install requests Biopython shutil tempfile, seaborn
+    pip install requests Biopython shutil tempfile seaborn
 
 ## Further Development
 
