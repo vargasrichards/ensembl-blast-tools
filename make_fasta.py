@@ -4,9 +4,6 @@
 
 import textwrap, os, requests, sys
 
-import requests
-import sys
-
 def get_geneid(gene_id):
     server = "https://rest.ensembl.org"
     ext = f"/sequence/id/{gene_id}?"
@@ -43,20 +40,23 @@ def get_geneid(gene_id):
 def to_fasta(blast_results): 
     query, query_id = get_query(blast_results)
     fasta_file = blast_results + '.fasta'
-    with open(blast_results, 'r') as results:
-        with open(fasta_file, 'w') as fasta:
-            fasta.write(f">Query:{query_id}\n")
-            query = textwrap.wrap(query, 60)
-            query = '\n'.join(query)
-            fasta.write(query + "\n")
-            for line in results:
-                if '>' in line:
-                    fasta.write(line)
-                elif 'Sbjct' in line:
-                    line = ''.join([i for i in line if not i.isdigit()]) 
-                    line = line.replace('Sbjct    ', '').strip()
-                    fasta.write(line + "\n")
-    print(f"Produced FASTA: {fasta_file}")
+    if query != None:
+
+        with open(blast_results, 'r') as results:
+            with open(fasta_file, 'w') as fasta:
+                fasta.write(f">Query:{query_id}\n")
+                query = textwrap.wrap(query, 60)
+                query = '\n'.join(query)
+                fasta.write(query + "\n")
+                for line in results:
+                    if '>' in line:
+                        fasta.write(line)
+                    elif 'Sbjct' in line:
+                        line = ''.join([i for i in line if not i.isdigit()]) 
+                        line = line.replace('Sbjct    ', '').strip()
+                        fasta.write(line + "\n")
+        print(f"Produced FASTA: {fasta_file}")
+    return 
 
 def make_all(directory): 
     rel_path = f'./{directory}/'

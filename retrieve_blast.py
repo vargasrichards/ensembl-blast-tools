@@ -15,7 +15,6 @@ batch_id = 'dH2MUh3d5qVTSKJc',
 first = 23302378,
 last = 23302413)
 
-
 print("Finished HTTPS BLAST results retrieval")
 print("Calling cleaning script...")
 subprocess.call(['bash', './process.sh'])
@@ -30,5 +29,7 @@ print("----------------------------")
 print("Finished making FASTA files")
 print("----------------------------")
 print("Proceeding with Multiple Sequence Alignment using MUSCLE")
+
+# perhaps wait a bit here.... 
 call_msa.call_msa("BLAST-results")
 print("Finished MSA")
