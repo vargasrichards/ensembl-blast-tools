@@ -4,6 +4,8 @@ import requests, os, math, time
 # https://plants.ensembl.org/Triticum_aestivum_robigus/Download/Tools/Blast?tl=dH2MUh3d5qVTSKJc-23302406
 # https://plants.ensembl.org/Triticum_aestivum_robigus/Download/Tools/Blast?tl=dH2MUh3d5qVTSKJc-23302378
 
+# there have been issues with the requester in the past with HTML content being introduced
+
 def fetch_blast(varieties, species, batch_id, first, last):
 	print(f'Fetching BLAST for {varieties} of {species} with batch ID {batch_id} from job {first} to job {last}')
 	num_varieties = len(varieties)
@@ -40,7 +42,19 @@ def fetch_blast(varieties, species, batch_id, first, last):
 				status = 1
 		results_file = str('./' + str('BLAST-' + variety) + '/' + 'num' + str(cnt) + '_' + str(id) + '.txt') 
 		with open(results_file, 'w') as f:
-			f.writelines(r.text)
+			for line in r.text.splitlines():
+				print(line)
+				if filter_line(line) == 0:
+					f.write(line + '\n')
+			#f.writelines(r.text)
 		cnt += 1
 	return
+
+def filter_line(line): # filters lines which are suspected to be HTML
+    html_tags = ['<', '>', '!', 'src', 'script', '{', '}']
+    if any(tag in line for tag in html_tags):
+        print('HTML detected')
+        return 1
+    else:
+        return 0
 
