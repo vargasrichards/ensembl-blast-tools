@@ -51,7 +51,7 @@ def fetch_blast(varieties, species, batch_id, first, last):
 	return
 
 def filter_line(line): # filters lines which are suspected to be HTML
-    html_tags = ['<', '>', '!', 'src', 'script', '{', '}']
+    html_tags = ['<', '!', 'src', 'script', '{', '}']
     if any(tag in line for tag in html_tags):
         print('HTML detected')
         return 1
