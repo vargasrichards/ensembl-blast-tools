@@ -11,8 +11,7 @@ def call_msa(results_folder): # calls muscle on all of the
         for file in files:
             if ".fasta" in file:
                 print(f"Attemnpting subprocess.Popen for {file}")
-                print(f"current wd is {os.getcwd()}")
-                outfile = "BLAST-results/MSA_results/" + str(file) 
+                outfile = "MSA_results/" + str(file)
                 infile = "BLAST-results/" + str(file)
                 align_process = subprocess.Popen(["muscle", "-in", infile, "-out", outfile])
                 align_process.wait()
