@@ -40,7 +40,10 @@ def request_seqs(seqs):
         if not r.ok:
             r.raise_for_status()
             sys.exit()
-        fasta_element = '>' + str(gene) + '\n' + str(r.text) + '\n'
+        text = r.text
+        wrapped_text = textwrap.wrap(text, 60)
+        wrapped_text = '\n'.join(wrapped_text)
+        fasta_element = '>' + str(gene) + '\n' + str(wrapped_text) + '\n'
         filestring += fasta_element
 
 
